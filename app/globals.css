@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-20px) translateX(10px); }
+  50% { transform: translateY(-10px) translateX(-15px); }
+  75% { transform: translateY(-25px) translateX(5px); }
+}
+
+html { scroll-behavior: smooth; height: 100%; }
+
+body {
+  font-family: "GeistSans", sans-serif;
+  line-height: 1.6;
+  margin: 0px !important;
+  min-height: 100%;
+  background: #0C111F;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -25%; left: -10%;
+  width: 60%; height: 60%;
+  border-radius: 9999px;
+  background-color: rgba(13, 148, 136, 0.12);
+  filter: blur(120px);
+  z-index: -10;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -25%; right: -10%;
+  width: 60%; height: 60%;
+  border-radius: 9999px;
+  background-color: rgba(8, 145, 178, 0.12);
+  filter: blur(120px);
+  z-index: -10;
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}

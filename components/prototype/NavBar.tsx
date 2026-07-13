@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { href: "/", label: "首页", icon: "\u{1F3E0}" },
-  { href: "/literature", label: "文献检索", icon: "\u{1F4DA}" },
-  { href: "/review", label: "综述生成", icon: "\u270D\uFE0F" },
-  { href: "/data-analysis", label: "数据分析", icon: "\u{1F4CA}" },
-  { href: "/reference", label: "参考文献", icon: "\u{1F4DD}" },
+  { href: "/", label: "AI 对话", icon: "💬" },
+  { href: "/features", label: "功能介绍", icon: "🏠" },
+  { href: "/literature", label: "文献检索", icon: "📚" },
+  { href: "/review", label: "综述生成", icon: "✏️" },
+  { href: "/data-analysis", label: "数据分析", icon: "📊" },
+  { href: "/reference", label: "参考文献", icon: "📝" },
 ];
 
 export default function NavBar() {
@@ -26,11 +27,11 @@ export default function NavBar() {
           </Link>
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === item.href || (item.href === "/features" && pathname === "/features") || (item.href === "/" && pathname === "/");
               return (
-                <Link key={item.href} href={item.href} className={"relative px-4 py-2 rounded-lg text-sm font-medium transition-all " + (isActive ? "text-white" : "text-gray-400 hover:text-gray-200 hover:bg-white/[0.05]")}>
+                <Link key={item.href} href={item.href} className={"relative px-3 py-2 rounded-lg text-sm font-medium transition-all " + (isActive ? "text-white" : "text-gray-400 hover:text-gray-200 hover:bg-white/[0.05]")}>
                   {isActive && <motion.div layoutId="nav-pill" className="absolute inset-0 bg-white/[0.08] rounded-lg border border-white/[0.1]" transition={{ type: "spring", stiffness: 400, damping: 30 }} />}
-                  <span className="relative z-10 flex items-center gap-1.5"><span>{item.icon}</span>{item.label}</span>
+                  <span className="relative z-10 flex items-center gap-1.5"><span className="text-sm">{item.icon}</span>{item.label}</span>
                 </Link>
               );
             })}

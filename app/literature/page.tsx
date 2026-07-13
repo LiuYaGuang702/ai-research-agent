@@ -1,4 +1,5 @@
-"use client";`nimport { Suspense } from "react";
+"use client";
+import { Suspense } from "react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "next/navigation";

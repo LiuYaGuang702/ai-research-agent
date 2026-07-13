@@ -1,4 +1,4 @@
-"use client";
+"use client";`nimport { Suspense } from "react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "next/navigation";
@@ -14,7 +14,7 @@ const papers = [
   { id: 6, title: "Evaluating LLMs for Test Case Generation", authors: "Chen, B. et al.", journal: "IEEE TSE", year: 2025, citations: 98, relevance: 0.76, round: 3, abstract: "Empirical evaluation of LLMs on test case generation, comparing coverage and bug detection." },
 ];
 
-export default function LiteraturePage() {
+function LiteratureContent() {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [round, setRound] = useState(0);
@@ -147,5 +147,12 @@ export default function LiteraturePage() {
         </div>
       </div></div>
     </div>
+  );
+}
+export default function LiteraturePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0C111F] flex items-center justify-center"><div className="text-gray-400">加载中...</div></div>}>
+      <LiteratureContent />
+    </Suspense>
   );
 }
